@@ -1,0 +1,32 @@
+import {FETCH_START, FETCH_SUCCESS} from './../actions/index'
+import data from '../data';
+
+
+ 
+ const initialState = {
+     characters: data,
+     loading: false,
+     error: ""
+ }
+
+const reducer = (state = initialState, action) => {
+    switch(action.type) {
+        case FETCH_START:
+            return {
+                ...state,
+                loading: true,
+                error:""
+            }
+        case FETCH_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                characters: action.payload,
+                error:""
+            }
+        default:
+            return(state);
+    }
+}
+
+export default reducer;
